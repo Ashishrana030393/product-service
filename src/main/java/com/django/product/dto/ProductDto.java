@@ -1,37 +1,23 @@
-package com.django.product.entity;
+package com.django.product.dto;
 
+import com.django.product.entity.Category;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Document
-public class Product {
-    @Id
-    private String id;
+public class ProductDto {
     private String name;
     private String groupId;
     private int rank;
-    @Indexed(unique = true)
-    private String productId;
-    @Indexed(unique = true)
-    private String sku;
     private String description;
+    private String productId;
+    private String sku;
     private List<String> tags = new ArrayList<>();
-    @DBRef
+
     private Category category;
-    private String variantId;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -57,6 +43,14 @@ public class Product {
         this.rank = rank;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getProductId() {
         return productId;
     }
@@ -73,28 +67,12 @@ public class Product {
         this.sku = sku;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public List<String> getTags() {
         return tags;
     }
 
     public void setTags(List<String> tags) {
         this.tags = tags;
-    }
-
-    public String getVariantId() {
-        return variantId;
-    }
-
-    public void setVariantId(String variantId) {
-        this.variantId = variantId;
     }
 
     public Category getCategory() {
