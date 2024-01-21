@@ -10,7 +10,10 @@ spring:
       port: 27017
       authentication-database: admin
 eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 30
   client:
+
     service-url:
       defaultZone: http://localhost:8761/eureka
 
